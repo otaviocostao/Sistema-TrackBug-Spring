@@ -2,6 +2,7 @@ package com.trackbug.trackbug.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,9 @@ public class Emprestimo {
 
     private LocalDateTime dataHoraSaida;
     private LocalDateTime dataHoraRetorno;
+    @ManyToOne
     private Funcionario funcionarioResponsavel;
+    @ManyToOne
     private Equipamento equipamento;
     private String observacoesEmprestimo;
 }

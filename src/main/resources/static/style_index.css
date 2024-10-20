@@ -1,0 +1,58 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial;
+}
+
+header{
+    width:100%;
+    height: 60px;
+    background-color:#393939;
+    color:white;
+    display:flex;
+    align-items:center;
+
+}
+
+header>h2{
+    margin-left:15px;
+}
+
+#content-main{
+    width:100vw;
+    height:100vh;
+}
+
+#barra-lateral{
+    width:15vw;
+    height:100%;
+    background-color:#494949;
+}
+
+.botoes-barra-lateral{
+    width:100%;
+    height:18%;
+    border-bottom: solid 1px #696969;
+}
+
+.area-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.btn-funcao{
+    width:90%;
+    height:40px;
+    border: solid 0px;
+    background-color:#494949;
+    color:white;
+    font-size:11pt;
+    cursor:pointer;
+    border-radius:8px;
+    text-align:start;
+}
+
+.btn-funcao:hover{
+    background-color: #595959;
+}
