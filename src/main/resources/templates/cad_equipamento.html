@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style_barralateral.css">
+    <link rel="stylesheet" href="../static/css/style_cadequipamento.css">
+    <title>Cadastrar equipamento</title>
+</head>
+<body>
+    <div id="content-main">
+        <div id="barra-lateral">
+            <div id="logo">
+                 <h2>TrackBug</h2>
+            </div>
+            <div class="area-home">
+                <div class="area-btn">
+                    <a href="index.html" class="btn-funcao">Início</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="cad_funcionario.html" class="btn-funcao">Cadastrar funcionário</a>
+                </div>
+                <div class="area-btn">
+                    <a href="cad_equipamento.html" class="btn-funcao">Cadastrar equipamento</a>
+                </div>
+                <div class="area-btn">
+                    <a href="novo_emprestimo.html" class="btn-funcao">Novo empréstimo</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="listar_funcion.html" class="btn-funcao">Lista de funcionários</a>
+                </div>
+                <div class="area-btn">
+                    <a href="listar_equipamentos.html" class="btn-funcao">Lista de equipamentos</a>
+                </div>
+                <div class="area-btn">
+                    <a href="listar_emprestimo.html" class="btn-funcao">Lista de empréstimos</a>
+                </div>
+            </div>
+            <div class="area-home">
+                <div class="area-btn">
+                    <a href="historico_emprestimos.html" class="btn-funcao">Históricos de empréstimos</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar funcionário</a>
+                </div>
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar equipamento</a>
+                </div>
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar empréstimo</a>
+                </div>
+            </div>
+        </div>
+        <div id="lado-direito">
+            <div id="cabecalho-pag"><h2>Cadastrar novo equipamento</h2></div>
+            <div id="area-formulario">
+                <form action="" method="POST">
+                    <div class="text-field">
+                        <label for="descricao-equip">Descrição:</label>
+                        <input type="text" name="descricao-equip" id="descricao-equip">
+                    </div>
+                    <div class="text-field">
+                        <label for="data-compra">Data de compra:</label>
+                        <input type="date" name="data-compra" id="data-compra">
+                    </div>
+                    <div class="text-field">
+                        <label for="peso-eqp">Peso (g):</label>
+                        <input type="text" name="peso-eqp" id="peso-eqp" class="medidas">
+                    </div>
+                    <div class="text-field">
+                        <label for="largura-eqp">Largura (cm):</label>
+                        <input type="text" name="largura-eqp" id="largura-eqp" class="medidas">
+                    </div>
+                    <div class="text-field">
+                        <label for="comprimento-eqp">Comprimento (cm):</label>
+                        <input type="text" name="comprimento-eqp" id="comprimento-eqp" class="medidas">
+                    </div>
+                    <div class="text-field">
+                        <label for="hist-manutencao">Histórico de manutenção:</label>
+                        <input type="text" name="hist-manutencao" id="hist-manutencao">
+                    </div>
+                    <div class="text-field">
+                        <label for="estado-conserv">Estado de conservação:</label>
+                        <input type="text" name="estado-conserv" id="estado-conserv">
+                    </div>
+                    <div id="area-btn-salvar">
+                        <button id="btn-salvar">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

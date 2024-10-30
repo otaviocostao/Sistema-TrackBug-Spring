@@ -1,6 +1,8 @@
 package com.trackbug.trackbug.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 public class Equipamento {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipamento;
 
     private String descricaoEqp;

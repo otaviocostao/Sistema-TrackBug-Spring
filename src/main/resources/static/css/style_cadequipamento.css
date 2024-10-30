@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+#lado-direito{
+    width: 85vw;
+    height: 100%;
+}
+
+#cabecalho-pag{
+    width: 90%;
+    height: 5%;
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #393939;
+}
+
+
+#area-formulario{
+    width: 100%;
+    height: 80%;
+}
+
+.text-field{
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+}
+
+#descricao-equip{
+    width: 50vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+}
+
+.medidas{
+    width: 6vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+}
+
+#data-compra{
+    width: 7vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+}
+
+
+#hist-manutencao{
+    width: 50vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+}
+
+#estado-conserv{
+    width: 50vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+}
+
+#area-btn-salvar{
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+#btn-salvar{
+    width: 120px;
+    height: 34px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 1px 1px 0px #898989;
+    font-size: 11pt;
+    background-color: rgb(0, 81, 255);
+    color: #ffff;
+}
+
+#btn-salvar:hover{
+    background-color: rgb(39, 108, 255);
+}

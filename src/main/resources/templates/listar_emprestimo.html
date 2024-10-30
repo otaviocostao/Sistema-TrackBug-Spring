@@ -1,13 +1,16 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns:th="http://www.thymeleaf.org">!-->
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/css/style_index.css}">
-    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
-    <title>TrackBug - Início</title>
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">!-->
+    <!--<link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">!-->
+    <link rel="stylesheet" href="../static/css/style_listaremprestimo.css">
+    <link rel="stylesheet" href="../static/css/style_barralateral.css">
+    <title>Lista de empréstimos</title>
 </head>
 <body>
     <div id="content-main">
@@ -17,12 +20,12 @@
             </div>
             <div class="area-home">
                 <div class="area-btn">
-                    <a th:href="@{/}" class="btn-funcao">Início</a>
+                    <a href="index.html" class="btn-funcao">Início</a>
                 </div>
             </div>
             <div class="botoes-barra-lateral">
                 <div class="area-btn">
-                    <a th:href="@{/cadastraFuncionario}" class="btn-funcao">Cadastrar funcionário</a>
+                    <a href="cad_funcionario.html" class="btn-funcao">Cadastrar funcionário</a>
                 </div>
                 <div class="area-btn">
                     <a href="cad_equipamento.html" class="btn-funcao">Cadastrar equipamento</a>
@@ -33,7 +36,7 @@
             </div>
             <div class="botoes-barra-lateral">
                 <div class="area-btn">
-                    <a th:href="@{/listarFuncionarios}" class="btn-funcao">Lista de funcionários</a>
+                    <a href="listar_funcion.html" class="btn-funcao">Lista de funcionários</a>
                 </div>
                 <div class="area-btn">
                     <a href="listar_equipamentos.html" class="btn-funcao">Lista de equipamentos</a>
@@ -60,32 +63,20 @@
             </div>
         </div>
         <div id="lado-direito">
-            <div id="cabecalho-pag"><h2>Início</h2></div>
-            <div id="cards-home">
-                <div id="card1">
-                    <h3>Funcionários cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>
-                </div>
-                <div id="card2">
-                    <h3>Equipamentos cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>
-                </div>
-                <div id="card3">
-                    <h3>Empréstimos realizados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>    
-                </div>
-            </div>
-            <div id="cabecalho-emprestimos">
-                <h2>Empréstimos atrasados</h2>
+            <div id="cabecalho-pag"><h2>Lista de empréstimos</h2></div>
+            <div id="area-filtros">
+                <label for="filtro-data">Filtrar por:</label>
+                <select name="filtro-data" id="filtro-data">
+                    <option value="" ></option>
+                    <option value="recentes">Mais recentes</option>
+                    <option value="antigos">Mais antigos</option>
+                </select>
+                <label for="vencimento">Prazo:</label>
+                <select name="vencimento" id="vencimento" >
+                    <option value=""></option>
+                    <option value="regular">Regular</option>
+                    <option value="atrasado">Atrasado</option>
+                </select>
             </div>
             <div id="area-tabela">
                 <table class="striped-table">
@@ -97,6 +88,8 @@
                             <th>Data de saída</th>
                             <th>Data de retorno</th>
                             <th>Observações</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,6 +100,8 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td><a href="" class="devolver">Devolver</a></td>
+                            <td><a href="" class="editar">Editar</a></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -115,6 +110,8 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td><a href="" class="devolver">Devolver</a></td>
+                            <td><a href="" class="editar">Editar</a></td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -123,6 +120,8 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td><a href="" class="devolver">Devolver</a></td>
+                            <td><a href="" class="editar">Editar</a></td>
                         </tr>
                         <tr>
                             <td>4</td>
@@ -131,12 +130,14 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td><a href="" class="devolver">Devolver</a></td>
+                            <td><a href="" class="editar">Editar</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        </div>
     </div>
 </body>
 </html>
+    

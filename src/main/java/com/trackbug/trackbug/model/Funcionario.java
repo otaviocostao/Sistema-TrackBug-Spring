@@ -1,6 +1,8 @@
 package com.trackbug.trackbug.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
@@ -14,8 +16,10 @@ import lombok.*;
 public class Funcionario {
 
     @Id
-    private Long idFuncionario;
-    private String nomeFuncionario;
-    private String funcaoFuncionario;
-    private String dataAdmissaoFuncionario;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_funcionario;
+    
+    private String nome_funcionario;
+    private String funcao_funcionario;
+    private String data_admissao_funcionario;
 }

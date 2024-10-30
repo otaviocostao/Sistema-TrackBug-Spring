@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" th:href="@{/css/style_listarfunc.css}">
     <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
-    <title>TrackBug - Início</title>
+    <title>Lista de funcionários</title>
 </head>
 <body>
     <div id="content-main">
@@ -33,7 +33,7 @@
             </div>
             <div class="botoes-barra-lateral">
                 <div class="area-btn">
-                    <a th:href="@{/listarFuncionarios}" class="btn-funcao">Lista de funcionários</a>
+                    <a th:href="@{/listarFuncionario}" class="btn-funcao">Lista de funcionários</a>
                 </div>
                 <div class="area-btn">
                     <a href="listar_equipamentos.html" class="btn-funcao">Lista de equipamentos</a>
@@ -60,82 +60,38 @@
             </div>
         </div>
         <div id="lado-direito">
-            <div id="cabecalho-pag"><h2>Início</h2></div>
-            <div id="cards-home">
-                <div id="card1">
-                    <h3>Funcionários cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>
-                </div>
-                <div id="card2">
-                    <h3>Equipamentos cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>
-                </div>
-                <div id="card3">
-                    <h3>Empréstimos realizados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
-                        <button class="btn-vertodos">Ver todos</button>
-                    </a>    
-                </div>
-            </div>
-            <div id="cabecalho-emprestimos">
-                <h2>Empréstimos atrasados</h2>
+            <div id="cabecalho-pag"><h2>Lista de funcionários</h2></div>
+            <div id="area-filtros">
+                <label for="filtro-data">Filtrar por:</label>
+                <select name="filtro-data" id="filtro-data">
+                    <option value="" ></option>
+                    <option value="recentes">Mais recentes</option>
+                    <option value="antigos">Mais antigos</option>
+                </select>
             </div>
             <div id="area-tabela">
                 <table class="striped-table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Equipamento</th>
-                            <th>Funcionário</th>
-                            <th>Data de saída</th>
-                            <th>Data de retorno</th>
-                            <th>Observações</th>
+                            <th>Nome</th>
+                            <th>Função</th>
+                            <th>Data de admissão</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    <tr th:each="funcionario, iterStat : ${funcionarios}">
+                        <td th:text="${funcionario.id_funcionario}"></td>
+                        <td th:text="${funcionario.nome_funcionario}"></td>
+                        <td th:text="${funcionario.funcao_funcionario}"></td>
+                        <td th:text="${funcionario.data_admissao_funcionario}"></td>
+                        <td><a th:href="@{'/funcionarios/excluir/' + ${funcionario.id_funcionario}}" class="deletar">Deletar</a></td>
+                        <td><a th:href="@{'/funcionarios/editar/' + ${funcionario.id_funcionario}}" class="editar">Editar</a></td>
                     </tbody>
                 </table>
             </div>
-        </div>
         </div>
     </div>
 </body>

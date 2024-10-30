@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style_barralateral.css">
+    <link rel="stylesheet" href="../static/css/style_novoemprestimo.css">
+    <title>Realizar empréstimo</title>
+</head>
+<body>
+    <div id="content-main">
+        <div id="barra-lateral">
+            <div id="logo">
+                 <h2>TrackBug</h2>
+            </div>
+            <div class="area-home">
+                <div class="area-btn">
+                    <a href="index.html" class="btn-funcao">Início</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="cad_funcionario.html" class="btn-funcao">Cadastrar funcionário</a>
+                </div>
+                <div class="area-btn">
+                    <a href="cad_equipamento.html" class="btn-funcao">Cadastrar equipamento</a>
+                </div>
+                <div class="area-btn">
+                    <a href="novo_emprestimo.html" class="btn-funcao">Novo empréstimo</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="listar_funcion.html" class="btn-funcao">Lista de funcionários</a>
+                </div>
+                <div class="area-btn">
+                    <a href="listar_equipamentos.html" class="btn-funcao">Lista de equipamentos</a>
+                </div>
+                <div class="area-btn">
+                    <a href="listar_emprestimo.html" class="btn-funcao">Lista de empréstimos</a>
+                </div>
+            </div>
+            <div class="area-home">
+                <div class="area-btn">
+                    <a href="historico_emprestimos.html" class="btn-funcao">Históricos de empréstimos</a>
+                </div>
+            </div>
+            <div class="botoes-barra-lateral">
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar funcionário</a>
+                </div>
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar equipamento</a>
+                </div>
+                <div class="area-btn">
+                    <a href="" class="btn-funcao">Buscar empréstimo</a>
+                </div>
+            </div>
+        </div>
+        <div id="lado-direito">
+            <div id="cabecalho-pag"><h2>Realizar empréstimo de equipamento</h2></div>
+            <div id="area-formulario">
+                <form action="" method="POST">
+                    <div class="text-field">
+                        <label for="eqp-emprestimo">Equipamento:</label>
+                        <select name="eqp-emprestimo" id="eqp-emprestimo"></select>
+                    </div>
+                    <div class="text-field">
+                        <label for="funci-emprestimo">Funcionário:</label>
+                        <select name="funci-emprestimo" id="funci-emprestimo"></select>
+                    </div>
+                    <div class="text-field">
+                        <label for="data-saida">Data de saída:</label>
+                        <input type="date" name="data-saida" id="data-saida" class="data-emprestimo">
+                    </div>
+                    <div class="text-field">
+                        <label for="data-retorno">Data de retorno:</label>
+                        <input type="date" name="data-retorno" id="data-retorno" class="data-emprestimo">
+                    </div>
+                    <div class="text-field">
+                        <label for="obs-emprestimo">Observações:</label>
+                        <input type="text" name="obs-emprestimo" id="obs-emprestimo">
+                    </div>
+                    <div id="area-btn-salvar">
+                        <button id="btn-salvar">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

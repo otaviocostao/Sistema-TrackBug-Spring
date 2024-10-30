@@ -1,0 +1,79 @@
+
+#content-main{
+    width:100vw;
+    height:100vh;
+    display: flex;
+}
+
+
+#voltar>img{
+    width: 25px;
+    filter:invert();
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+#logo{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #ffff;
+    border-bottom: solid 1px #696969;
+}
+
+#logo>h2{
+    margin-left: 15px;
+
+}
+
+#barra-lateral{
+    width:15vw;
+    height:100%;
+    background-color:#393939;
+}
+
+
+.area-home{
+    width:100%;
+    height:6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px #696969;
+}
+
+.botoes-barra-lateral{
+    width:100%;
+    height:17%;
+    border-bottom: solid 1px #696969;
+}
+
+.area-btn{
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.btn-funcao{
+    width:90%;
+    height:20px;
+    padding: 8px;
+    border: solid 0px;
+    background-color:#393939;
+    color:white;
+    font-size:11pt;
+    cursor:pointer;
+    border-radius:8px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.btn-funcao:hover{
+    background-color: #595959;
+}
