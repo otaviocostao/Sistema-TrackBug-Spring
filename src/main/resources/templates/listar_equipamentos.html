@@ -1,15 +1,12 @@
 <!doctype html>
-<!--<html xmlns:th="http://www.thymeleaf.org">!-->
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">!-->
-    <!--<link rel="stylesheet" th:href="@{/css/style_index.css}">
-    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">!-->
-    <link rel="stylesheet" href="../static/css/style_listarequipamentos.css">
-    <link rel="stylesheet" href="../static/css/style_barralateral.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style_listarequipamentos.css}">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
     <title>Lista de equipamentos</title>
 </head>
 <body>
@@ -20,7 +17,7 @@
             </div>
             <div class="area-home">
                 <div class="area-btn">
-                    <a href="index.html" class="btn-funcao">Início</a>
+                    <a th:href="@{/}" class="btn-funcao">Início</a>
                 </div>
             </div>
             <div class="botoes-barra-lateral">
@@ -82,7 +79,7 @@
             <div id="area-tabela">
                 <table class="striped-table">
                     <thead>
-                        <tr>
+                        <tr >
                             <th>#</th>
                             <th>Descrição</th>
                             <th>Data compra</th>
@@ -97,55 +94,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Furadeira de bancada</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="deletar">Deletar</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="deletar">Deletar</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="deletar">Deletar</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr th:each="equipamento, iterStat : ${equipamentos}">
+                            <td th:text="${equipamento.id_equipamento}"></td>
+                            <td th:text="${equipamento.descricao_eqp}"></td>
+                            <td th:text="${equipamento.data_compra_eqp}"></td>
+                            <td th:text="${equipamento.peso_eqp}"></td>
+                            <td th:text="${equipamento.largura_eqp}"></td>
+                            <td th:text="${equipamento.comprimento_eqp}"></td>
+                            <td th:text="${equipamento.historico_manutencao_eqp}"></td>
+                            <td th:text="${equipamento.estado_conservacao_eqp}"></td>
+                            <td th:text="${equipamento.disponibilidade_eqp}"></td>
                             <td><a href="" class="deletar">Deletar</a></td>
                             <td><a href="" class="editar">Editar</a></td>
                         </tr>

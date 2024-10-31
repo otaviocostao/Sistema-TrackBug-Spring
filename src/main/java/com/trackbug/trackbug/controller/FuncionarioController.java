@@ -32,4 +32,5 @@ public class FuncionarioController {
         funcionarioService.saveFuncionario(funcionario);
         return "redirect:/listarFuncionarios";
     }
+
 }

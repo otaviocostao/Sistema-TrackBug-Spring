@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css\style_barralateral.css">
-    <link rel="stylesheet" href="../static/css/style_cadequipamento.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
+    <link rel="stylesheet" th:href="@{/css/style_cadequipamento.css}">
     <title>Cadastrar equipamento</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
             </div>
             <div class="area-home">
                 <div class="area-btn">
-                    <a href="index.html" class="btn-funcao">Início</a>
+                    <a th:href="@{/}" class="btn-funcao">Início</a>
                 </div>
             </div>
             <div class="botoes-barra-lateral">
@@ -60,34 +62,34 @@
         <div id="lado-direito">
             <div id="cabecalho-pag"><h2>Cadastrar novo equipamento</h2></div>
             <div id="area-formulario">
-                <form action="" method="POST">
+                <form th:action="@{/salvarEquipamento}" th:object="${equipamento}" method="post">
                     <div class="text-field">
                         <label for="descricao-equip">Descrição:</label>
-                        <input type="text" name="descricao-equip" id="descricao-equip">
+                        <input type="text" name="descricao-equip" id="descricao-equip" th:field="*{descricao_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="data-compra">Data de compra:</label>
-                        <input type="date" name="data-compra" id="data-compra">
+                        <input type="date" name="data-compra" id="data-compra" th:field="*{data_compra_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="peso-eqp">Peso (g):</label>
-                        <input type="text" name="peso-eqp" id="peso-eqp" class="medidas">
+                        <input type="text" name="peso-eqp" id="peso-eqp" class="medidas" th:field="*{peso_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="largura-eqp">Largura (cm):</label>
-                        <input type="text" name="largura-eqp" id="largura-eqp" class="medidas">
+                        <input type="text" name="largura-eqp" id="largura-eqp" class="medidas" th:field="*{largura_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="comprimento-eqp">Comprimento (cm):</label>
-                        <input type="text" name="comprimento-eqp" id="comprimento-eqp" class="medidas">
+                        <input type="text" name="comprimento-eqp" id="comprimento-eqp" class="medidas" th:field="*{comprimento_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="hist-manutencao">Histórico de manutenção:</label>
-                        <input type="text" name="hist-manutencao" id="hist-manutencao">
+                        <input type="text" name="hist-manutencao" id="hist-manutencao" th:field="*{historico_manutencao_eqp}">
                     </div>
                     <div class="text-field">
                         <label for="estado-conserv">Estado de conservação:</label>
-                        <input type="text" name="estado-conserv" id="estado-conserv">
+                        <input type="text" name="estado-conserv" id="estado-conserv" th:field="*{estado_conservacao_eqp}">
                     </div>
                     <div id="area-btn-salvar">
                         <button id="btn-salvar">Salvar</button>

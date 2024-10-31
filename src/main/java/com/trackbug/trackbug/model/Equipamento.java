@@ -5,7 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -18,13 +19,14 @@ public class Equipamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEquipamento;
+    private Long id_equipamento;
 
-    private String descricaoEqp;
-    private LocalDateTime dataCompraEqp;
-    private double pesoEqp;
-    private double larguraEqp;
-    private double comprimentoEqp;
-    private String historicoManutencaoEqp;
-    private String estadoConservacaoEqp;
+    private String descricao_eqp;
+    private LocalDate data_compra_eqp;
+    private double peso_eqp;
+    private double largura_eqp;
+    private double comprimento_eqp;
+    private String historico_manutencao_eqp;
+    private String estado_conservacao_eqp;
+    private String disponibilidade_eqp = "Disponível";
 }
