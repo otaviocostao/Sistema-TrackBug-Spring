@@ -1,15 +1,12 @@
 <!doctype html>
-<!--<html xmlns:th="http://www.thymeleaf.org">!-->
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">!-->
-    <!--<link rel="stylesheet" th:href="@{/css/style_index.css}">
-    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">!-->
-    <link rel="stylesheet" href="../static/css/style_listaremprestimo.css">
-    <link rel="stylesheet" href="../static/css/style_barralateral.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style_listaremprestimo.css}">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
     <title>Lista de empréstimos</title>
 </head>
 <body>
@@ -20,7 +17,7 @@
             </div>
             <div class="area-home">
                 <div class="area-btn">
-                    <a href="index.html" class="btn-funcao">Início</a>
+                    <a th:href="@{/}" class="btn-funcao">Início</a>
                 </div>
             </div>
             <div class="botoes-barra-lateral">
@@ -93,43 +90,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr th:each="emprestimo, iterStat : ${emprestimos}">
+                            <td th:text="${emprestimo.id}"></td>
+                            <td th:text="${emprestimo.equipamento.getDescricao_eqp}"></td>
+                            <td th:text="${emprestimo.funcionario_responsavel.getNome_funcionario}"></td>
+                            <td th:text="${emprestimo.data_hora_saida}"></td>
+                            <td th:text="${emprestimo.data_hora_retorno}"></td>
+                            <td th:text="${emprestimo.observacoes_emprestimo}"></td>
                             <td><a href="" class="devolver">Devolver</a></td>
                             <td><a href="" class="editar">Editar</a></td>
                         </tr>

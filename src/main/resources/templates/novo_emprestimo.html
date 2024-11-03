@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css\style_barralateral.css">
-    <link rel="stylesheet" href="../static/css/style_novoemprestimo.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style_novoemprestimo.css}">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
     <title>Realizar empréstimo</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
             </div>
             <div class="area-home">
                 <div class="area-btn">
-                    <a href="index.html" class="btn-funcao">Início</a>
+                    <a th:href="@{/}" class="btn-funcao">Início</a>
                 </div>
             </div>
             <div class="botoes-barra-lateral">
@@ -60,26 +62,40 @@
         <div id="lado-direito">
             <div id="cabecalho-pag"><h2>Realizar empréstimo de equipamento</h2></div>
             <div id="area-formulario">
-                <form action="" method="POST">
+                <form th:action="@{/salvarEmprestimo}" th:object="${emprestimo}" method="post">
                     <div class="text-field">
-                        <label for="eqp-emprestimo">Equipamento:</label>
-                        <select name="eqp-emprestimo" id="eqp-emprestimo"></select>
+                        <label for="id_funcionario">Funcionário:</label>
+                        <select name="id_funcionario" id="id_funcionario">
+                            <option value="">Selecione um funcionário</option>
+                            <option th:each="funcionario : ${funcionarios}"
+                                    th:value="${funcionario.id_funcionario}"
+                                    th:text="${funcionario.nome_funcionario}">
+                            </option>
+                        </select>
                     </div>
+
                     <div class="text-field">
-                        <label for="funci-emprestimo">Funcionário:</label>
-                        <select name="funci-emprestimo" id="funci-emprestimo"></select>
+                        <label for="id_equipamento">Equipamento:</label>
+                        <select name="id_equipamento" id="id_equipamento">
+                            <option value="">Selecione um equipamento</option>
+                            <option th:each="equipamento : ${equipamentos}"
+                                    th:value="${equipamento.id_equipamento}"
+                                    th:text="${equipamento.descricao_eqp}">
+                            </option>
+                        </select>
                     </div>
+
                     <div class="text-field">
                         <label for="data-saida">Data de saída:</label>
-                        <input type="date" name="data-saida" id="data-saida" class="data-emprestimo">
+                        <input type="datetime-local" name="data-saida" id="data-saida" class="data-emprestimo" th:field="*{data_hora_saida}">
                     </div>
                     <div class="text-field">
                         <label for="data-retorno">Data de retorno:</label>
-                        <input type="date" name="data-retorno" id="data-retorno" class="data-emprestimo">
+                        <input type="datetime-local" name="data-retorno" id="data-retorno" class="data-emprestimo" th:field="*{data_hora_retorno}">
                     </div>
                     <div class="text-field">
                         <label for="obs-emprestimo">Observações:</label>
-                        <input type="text" name="obs-emprestimo" id="obs-emprestimo">
+                        <input type="text" name="obs-emprestimo" id="obs-emprestimo" th:field="*{observacoes_emprestimo}">
                     </div>
                     <div id="area-btn-salvar">
                         <button id="btn-salvar">Salvar</button>

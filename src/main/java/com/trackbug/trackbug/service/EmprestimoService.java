@@ -2,10 +2,12 @@ package com.trackbug.trackbug.service;
 
 import com.trackbug.trackbug.model.Emprestimo;
 import com.trackbug.trackbug.repository.EmprestimoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmprestimoService {
 
     EmprestimoRepository emprestimoRepository;
