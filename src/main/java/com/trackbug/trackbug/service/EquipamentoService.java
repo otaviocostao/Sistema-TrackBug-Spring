@@ -37,4 +37,8 @@ public class EquipamentoService {
     public void deleteEquipamento(Long id){
         equipamentoRepository.deleteById(id);
     }
+
+    public List<Equipamento> findEquipamentosDisponiveis(){
+        return equipamentoRepository.findByDisponibilidade("Disponível");
+    }
 }

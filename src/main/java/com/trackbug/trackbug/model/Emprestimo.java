@@ -24,6 +24,8 @@ public class Emprestimo {
     @ManyToOne
     private Equipamento equipamento;
     private String observacoes_emprestimo;
+    private String status = "Ativo";
+    private LocalDateTime data_devolucao;
 
     public void setId(long id) {
         this.id = id;
@@ -49,6 +51,14 @@ public class Emprestimo {
         this.observacoes_emprestimo = observacoes_emprestimo;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setData_devolucao(LocalDateTime data_devolucao) {
+        this.data_devolucao = data_devolucao;
+    }
+
     public long getId() {
         return id;
     }
@@ -71,5 +81,13 @@ public class Emprestimo {
 
     public String getObservacoes_emprestimo() {
         return observacoes_emprestimo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getData_devolucao() {
+        return data_devolucao;
     }
 }

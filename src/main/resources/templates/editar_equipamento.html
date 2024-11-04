@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/css/style_listaremprestimo.css}">
     <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
-    <title>Lista de empréstimos</title>
+    <link rel="stylesheet" th:href="@{/css/style_cadequipamento.css}">
+    <title>Editar equipamento</title>
 </head>
 <body>
     <div id="content-main">
@@ -60,51 +60,47 @@
             </div>
         </div>
         <div id="lado-direito">
-            <div id="cabecalho-pag"><h2>Lista de empréstimos</h2></div>
-            <div id="area-filtros">
-                <label for="filtro-data">Filtrar por:</label>
-                <select name="filtro-data" id="filtro-data">
-                    <option value="" ></option>
-                    <option value="recentes">Mais recentes</option>
-                    <option value="antigos">Mais antigos</option>
-                </select>
-                <label for="vencimento">Prazo:</label>
-                <select name="vencimento" id="vencimento" >
-                    <option value=""></option>
-                    <option value="regular">Regular</option>
-                    <option value="atrasado">Atrasado</option>
-                </select>
-            </div>
-            <div id="area-tabela">
-                <table class="striped-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Equipamento</th>
-                            <th>Funcionário</th>
-                            <th>Data de saída</th>
-                            <th>Data de retorno</th>
-                            <th>Observações</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="emprestimo, iterStat : ${emprestimos}">
-                            <td th:text="${emprestimo.id}"></td>
-                            <td th:text="${emprestimo.equipamento.descricao_eqp}"></td>
-                            <td th:text="${emprestimo.funcionario_responsavel.nome_funcionario}"></td>
-                            <td th:text="${emprestimo.data_hora_saida}"></td>
-                            <td th:text="${emprestimo.data_hora_retorno}"></td>
-                            <td th:text="${emprestimo.observacoes_emprestimo}"></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="cabecalho-pag"><h2>Cadastrar novo equipamento</h2></div>
+            <div id="area-formulario">
+                <form th:action="@{/salvarEdicaoEquipamento}" th:object="${equipamento}" method="post">
+                    <div class="text-field">
+                        <input type="hidden" name="id" th:field="${equipamento.id_equipamento}">
+                    </div>
+                    <div class="text-field">
+                        <label for="descricao-equip">Descrição:</label>
+                        <input type="text" name="descricao-equip" id="descricao-equip" th:field="*{descricao_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="data-compra">Data de compra:</label>
+                        <input type="date" name="data-compra" id="data-compra" th:field="*{data_compra_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="peso-eqp">Peso (g):</label>
+                        <input type="text" name="peso-eqp" id="peso-eqp" class="medidas" th:field="*{peso_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="largura-eqp">Largura (cm):</label>
+                        <input type="text" name="largura-eqp" id="largura-eqp" class="medidas" th:field="*{largura_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="comprimento-eqp">Comprimento (cm):</label>
+                        <input type="text" name="comprimento-eqp" id="comprimento-eqp" class="medidas" th:field="*{comprimento_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="hist-manutencao">Histórico de manutenção:</label>
+                        <input type="text" name="hist-manutencao" id="hist-manutencao" th:field="*{historico_manutencao_eqp}">
+                    </div>
+                    <div class="text-field">
+                        <label for="estado-conserv">Estado de conservação:</label>
+                        <input type="text" name="estado-conserv" id="estado-conserv" th:field="*{estado_conservacao_eqp}">
+                    </div>
+                    <div id="area-btn-salvar">
+                        <button id="btn-salvar">Salvar</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
 </body>
 </html>
-    

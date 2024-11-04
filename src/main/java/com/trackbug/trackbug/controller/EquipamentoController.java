@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -30,6 +31,26 @@ public class EquipamentoController {
     @PostMapping("/salvarEquipamento")
     public String salvarEquipamento(@ModelAttribute("equipamento") Equipamento equipamento){
         equipamentoService.saveEquipamento(equipamento);
+        return "redirect:/listarEquipamentos";
+    }
+
+    @GetMapping("/editarEquipamento/{id}")
+    public String editarEquipamento(@PathVariable("id") Long id, Model model){
+        Equipamento equipamento =  equipamentoService.getById(id).orElseThrow(() -> new RuntimeException("Equipamento não encontrado com ID: " + id));
+        model.addAttribute("equipamento", equipamento);
+        return "editar_equipamento";
+    }
+
+    @PostMapping("/salvarEdicaoEquipamento")
+    public String salvarEdicaoEquipamento(@ModelAttribute("equipamento") Equipamento equipamento){
+        equipamentoService.updateEquipamento(equipamento);
+        return "redirect:/listarEquipamentos";
+    }
+
+    @PostMapping("/deletarEquipamento/{id}")
+    public String deletarEquipamento(@PathVariable("id") Long id){
+        equipamentoService.deleteEquipamento(id);
+
         return "redirect:/listarEquipamentos";
     }
 }

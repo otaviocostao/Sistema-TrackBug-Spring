@@ -35,4 +35,11 @@ public class EmprestimoService {
     public void deleteEmprestimo(Long id){
         emprestimoRepository.deleteById(id);
     }
+
+    public List<Emprestimo> findEmprestimosAtivos(){
+        return emprestimoRepository.findByStatus("Ativo");
+    }
+    public List<Emprestimo> findEmprestimosFinalizado(){
+        return emprestimoRepository.findByStatus("Finalizado");
+    }
 }

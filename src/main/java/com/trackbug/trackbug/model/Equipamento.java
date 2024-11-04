@@ -28,7 +28,7 @@ public class Equipamento {
     private double comprimento_eqp;
     private String historico_manutencao_eqp;
     private String estado_conservacao_eqp;
-    private String disponibilidade_eqp = "Disponível";
+    private String disponibilidade = "Disponível";
 
     public Long getId_equipamento() {
         return id_equipamento;
@@ -62,8 +62,8 @@ public class Equipamento {
         return estado_conservacao_eqp;
     }
 
-    public String getDisponibilidade_eqp() {
-        return disponibilidade_eqp;
+    public String getDisponibilidade() {
+        return disponibilidade;
     }
 
     public void setId_equipamento(Long id_equipamento) {
@@ -99,6 +99,6 @@ public class Equipamento {
     }
 
     public void setDisponibilidade_eqp(String disponibilidade_eqp) {
-        this.disponibilidade_eqp = disponibilidade_eqp;
+        this.disponibilidade = disponibilidade_eqp;
     }
 }

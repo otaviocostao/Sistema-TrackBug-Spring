@@ -56,6 +56,7 @@ table {
     border-collapse: collapse;
     margin-bottom: 1rem;
     background-color: transparent;
+    font-size:10pt;
 }
 
 th, td {
@@ -78,29 +79,41 @@ th {
 }
 
 .deletar{
-    width: 7px;
-    height: 7px;
-    padding: 7px;
+    width: 50px;
+    height: 25px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
     background-color: rgb(255, 14, 14);
-    text-decoration: none;
     color: white;
-    font-size: 10pt;
+    font-size: 9pt;
     border-radius: 5px;
+    cursor:pointer;
+    border:none;
 }
 
 .deletar:hover{
     background-color: rgb(255, 100, 100);
 }
 
+a{
+    text-decoration:none;
+}
+
 .editar{
-    width: 7px;
-    height: 7px;
-    padding: 7px;
-    background-color: rgb(0, 81, 255);
-    text-decoration: none;
+    width: 50px;
+    height: 25px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
     color: white;
-    font-size: 10pt;
+    font-size: 9pt;
     border-radius: 5px;
+    cursor:pointer;
+    border:none;
+    background-color: rgb(0, 81, 255);
 }
 
 .editar:hover{

@@ -103,9 +103,11 @@
                             <td th:text="${equipamento.comprimento_eqp}"></td>
                             <td th:text="${equipamento.historico_manutencao_eqp}"></td>
                             <td th:text="${equipamento.estado_conservacao_eqp}"></td>
-                            <td th:text="${equipamento.disponibilidade_eqp}"></td>
-                            <td><a href="" class="deletar">Deletar</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
+                            <td th:text="${equipamento.disponibilidade}"></td>
+                            <td><form th:action="@{/deletarEquipamento/{id}(id=${equipamento.id_equipamento})}" method="post" style="display: inline;" class="form-delete">
+                                <button type="submit" class="deletar">Deletar</button>
+                            </form></td>
+                            <td><a th:href="@{/editarEquipamento/{id}(id=${equipamento.id_equipamento})}"><button class="editar">Editar</button></a></td>
                         </tr>
                     </tbody>
                 </table>

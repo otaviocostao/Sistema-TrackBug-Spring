@@ -7,13 +7,9 @@ import com.trackbug.trackbug.service.EmprestimoService;
 import com.trackbug.trackbug.service.EquipamentoService;
 import com.trackbug.trackbug.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,7 +34,7 @@ public class EmprestimoController {
     @GetMapping("/novoEmprestimo")
     public String novoEmprestimo(Model model){
         // Lista de Equipamentos para o select do html:
-        List<Equipamento> equipamentos = equipamentoService.findAll();
+        List<Equipamento> equipamentos = equipamentoService.findEquipamentosDisponiveis();
         model.addAttribute("equipamentos", equipamentos);
         // Lista de funcionarios para o select do html:
         List<Funcionario> funcionarios = funcionarioService.findAll();
@@ -65,9 +61,29 @@ public class EmprestimoController {
                 .orElseThrow(() -> new RuntimeException("Equipamento não encontrado com ID: " + id_equipamento));
 
         emprestimo.setFuncionario_responsavel(funcionario);
+        equipamento.setDisponibilidade_eqp("Indisponível");
+        equipamentoService.updateEquipamento(equipamento);
         emprestimo.setEquipamento(equipamento);
+
         emprestimoService.saveEmprestimo(emprestimo);
 
+
+        return "redirect:/listarEmprestimos";
+    }
+
+
+    @GetMapping("/editarEmprestimo/{id}")
+    public String editarEmprestimo(@PathVariable("id") Long id, Model model){
+        Emprestimo emprestimo = emprestimoService.getById(id).orElseThrow(()-> new RuntimeException("Emprestimo não encontrado com ID: " + id));
+
+        model.addAttribute("emprestimo", emprestimo);
+        return "editar_emprestimo";
+    }
+
+    @PostMapping("/salvarEdicaoEmprestimo")
+    public String salvarEdicaoEmprestimo(@ModelAttribute("emprestimo") Emprestimo emprestimo){
+
+        emprestimoService.updateEmprestimo(emprestimo);
         return "redirect:/listarEmprestimos";
     }
 

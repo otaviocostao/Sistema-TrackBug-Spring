@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/css/style_listaremprestimo.css}">
+    <link rel="stylesheet" th:href="@{/css/style_novoemprestimo.css}">
     <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
-    <title>Lista de empréstimos</title>
+    <title>Editar empréstimo</title>
 </head>
 <body>
     <div id="content-main">
@@ -60,51 +60,46 @@
             </div>
         </div>
         <div id="lado-direito">
-            <div id="cabecalho-pag"><h2>Lista de empréstimos</h2></div>
-            <div id="area-filtros">
-                <label for="filtro-data">Filtrar por:</label>
-                <select name="filtro-data" id="filtro-data">
-                    <option value="" ></option>
-                    <option value="recentes">Mais recentes</option>
-                    <option value="antigos">Mais antigos</option>
-                </select>
-                <label for="vencimento">Prazo:</label>
-                <select name="vencimento" id="vencimento" >
-                    <option value=""></option>
-                    <option value="regular">Regular</option>
-                    <option value="atrasado">Atrasado</option>
-                </select>
-            </div>
-            <div id="area-tabela">
-                <table class="striped-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Equipamento</th>
-                            <th>Funcionário</th>
-                            <th>Data de saída</th>
-                            <th>Data de retorno</th>
-                            <th>Observações</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="emprestimo, iterStat : ${emprestimos}">
-                            <td th:text="${emprestimo.id}"></td>
-                            <td th:text="${emprestimo.equipamento.descricao_eqp}"></td>
-                            <td th:text="${emprestimo.funcionario_responsavel.nome_funcionario}"></td>
-                            <td th:text="${emprestimo.data_hora_saida}"></td>
-                            <td th:text="${emprestimo.data_hora_retorno}"></td>
-                            <td th:text="${emprestimo.observacoes_emprestimo}"></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="cabecalho-pag"><h2>Editar empréstimo de equipamento</h2></div>
+            <div id="area-formulario">
+                <form th:action="@{/salvarEdicaoEmprestimo}" th:object="${emprestimo}" method="post">
+                    <div class="text-field">
+                        <input type="hidden" th:field="*{id}">
+                    </div>
+                    <div class="text-field">
+                        <label for="nome_funcionario">Funcionário:</label>
+                        <input type="text" id="nome_funcionario" name="nome_funcionario" th:field="${emprestimo.funcionario_responsavel.nome_funcionario}" readonly>
+                        <input type="hidden" name="id_funcionario" th:field="${emprestimo.funcionario_responsavel.id_funcionario}">
+                    </div>
+
+                    <div class="text-field">
+                        <label for="desc_equipamento">Equipamento:</label>
+                        <input type="text" id="desc_equipamento" th:field="${emprestimo.equipamento.descricao_eqp}" readonly>
+                        <input type="hidden" name="id_equipamento" th:field="${emprestimo.equipamento.id_equipamento}">
+                    </div>
+
+                    <div class="text-field">
+                        <label for="data-saida">Data de saída:</label>
+                        <input type="datetime-local" name="data-saida" id="data-saida" class="data-emprestimo" th:field="*{data_hora_saida}">
+                    </div>
+                    <div class="text-field">
+                        <label for="data-retorno">Data de retorno:</label>
+                        <input type="datetime-local" name="data-retorno" id="data-retorno" class="data-emprestimo" th:field="*{data_hora_retorno}">
+                    </div>
+                    <div class="text-field">
+                        <label for="obs-emprestimo">Observações:</label>
+                        <input type="text" name="obs-emprestimo" id="obs-emprestimo" th:field="*{observacoes_emprestimo}">
+                    </div>
+                    <div class="text-field">
+                        <label for="status">Observações:</label>
+                        <input type="text" name="status" id="status" th:field="*{status}">
+                    </div>
+                    <div id="area-btn-salvar">
+                        <button id="btn-salvar">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </body>
 </html>
-    
