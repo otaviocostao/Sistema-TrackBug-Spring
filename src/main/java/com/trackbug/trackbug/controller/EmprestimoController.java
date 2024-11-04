@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -27,7 +28,7 @@ public class EmprestimoController {
 
     @GetMapping("/listarEmprestimos")
     public String listarEmprestimos(Model model){
-        model.addAttribute("emprestimos", emprestimoService.findAll());
+        model.addAttribute("emprestimos", emprestimoService.findEmprestimosAtivos());
         return "listar_emprestimo";
     }
 
@@ -87,5 +88,31 @@ public class EmprestimoController {
         return "redirect:/listarEmprestimos";
     }
 
+    @PostMapping("/deletarEmprestimo/{id}")
+    public String deletarEmprestimo(@PathVariable("id") Long id){
+        Emprestimo emprestimo = emprestimoService.getById(id).orElseThrow(()-> new RuntimeException("Emprestimo não encontrado com ID: " + id));
+        Equipamento equipamento = emprestimo.getEquipamento();
+        equipamento.setDisponibilidade_eqp("Disponível");
+        equipamentoService.saveEquipamento(equipamento);
 
+        emprestimoService.deleteEmprestimo(id);
+        return "redirect:/listarEmprestimos";
+    }
+
+    @PostMapping("/finalizarEmprestimo/{id}")
+    public String finalizarEmprestimo(@PathVariable("id") Long id){
+        Emprestimo emprestimo = emprestimoService.getById(id).orElseThrow(()-> new RuntimeException("Emprestimo não encontrado com ID: " + id));
+
+        emprestimo.setStatus("Finalizado");
+        LocalDateTime data_devolucao = LocalDateTime.now();
+        emprestimo.setData_devolucao(data_devolucao);
+
+        Equipamento equipamento = emprestimo.getEquipamento();
+        equipamento.setDisponibilidade_eqp("Disponível");
+        equipamentoService.saveEquipamento(equipamento);
+
+        emprestimoService.saveEmprestimo(emprestimo);
+
+        return "/redirect:/listarEmprestimos";
+    }
 }

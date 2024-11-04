@@ -42,4 +42,8 @@ public class EmprestimoService {
     public List<Emprestimo> findEmprestimosFinalizado(){
         return emprestimoRepository.findByStatus("Finalizado");
     }
+
+    public long countEmprestimos(){
+        return emprestimoRepository.countEmprestimos();
+    }
 }

@@ -38,4 +38,8 @@ public class FuncionarioService {
         funcionarioRepository.deleteById(id);
     }
 
+    public long countFuncionarios(){
+        return funcionarioRepository.countFuncionario();
+    }
+
 }

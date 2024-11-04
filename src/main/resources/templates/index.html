@@ -64,22 +64,22 @@
             <div id="cards-home">
                 <div id="card1">
                     <h3>Funcionários cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
+                    <h1><span th:text="${countFuncionario}">0</span></h1>
+                    <a th:href="@{/listarFuncionarios}">
                         <button class="btn-vertodos">Ver todos</button>
                     </a>
                 </div>
                 <div id="card2">
                     <h3>Equipamentos cadastrados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
+                    <h1><span th:text="${countEquipamento}">0</span></h1>
+                    <a th:href="@{/listarEquipamentos}">
                         <button class="btn-vertodos">Ver todos</button>
                     </a>
                 </div>
                 <div id="card3">
                     <h3>Empréstimos realizados</h3>
-                    <h1>10</h1>
-                    <a href="listar_funcion.html">
+                    <h1><span th:text="${countEmprestimo}">0</span></h1>
+                    <a th:href="@{/listarEmprestimos}">
                         <button class="btn-vertodos">Ver todos</button>
                     </a>    
                 </div>

@@ -91,7 +91,7 @@ th {
 
 .deletar{
     width: 50px;
-    height: 25px;
+    height: 28px;
     padding: 6px;
     display: flex;
     justify-content: center;
@@ -113,7 +113,7 @@ a{
 }
 .editar{
     width: 50px;
-    height: 25px;
+    height: 28px;
     padding: 6px;
     display: flex;
     justify-content: center;

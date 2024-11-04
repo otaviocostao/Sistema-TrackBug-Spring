@@ -87,6 +87,7 @@
                             <th>Observações</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,8 +98,13 @@
                             <td th:text="${emprestimo.data_hora_saida}"></td>
                             <td th:text="${emprestimo.data_hora_retorno}"></td>
                             <td th:text="${emprestimo.observacoes_emprestimo}"></td>
-                            <td><a href="" class="devolver">Devolver</a></td>
-                            <td><a href="" class="editar">Editar</a></td>
+                            <td><form th:action="@{/finalizarEmprestimo/{id}(id=${emprestimo.id})}" method="post" style="display: inline;" class="form-delete">
+                                <button type="submit" class="devolver">Devolver</button>
+                            </form></td>
+                            <td><a th:href="@{/editarEmprestimo/{id}(id=${emprestimo.id})}"><button class="editar">Editar</button></a></td>
+                            <td><form th:action="@{/deletarEmprestimo/{id}(id=${emprestimo.id})}" method="post" style="display: inline;" class="form-delete">
+                                <button type="submit" class="deletar">Cancelar</button>
+                            </form></td>
                         </tr>
                     </tbody>
                 </table>
