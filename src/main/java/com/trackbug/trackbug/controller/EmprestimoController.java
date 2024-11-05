@@ -113,6 +113,13 @@ public class EmprestimoController {
 
         emprestimoService.saveEmprestimo(emprestimo);
 
-        return "/redirect:/listarEmprestimos";
+        return "redirect:/listarEmprestimos";
+    }
+
+
+    @GetMapping("/historicoEmprestimos")
+    public String historicoEmprestimos(Model model){
+        model.addAttribute("emprestimos", emprestimoService.findEmprestimosFinalizado());
+        return "historico_emprestimo";
     }
 }
