@@ -62,12 +62,14 @@
         <div id="lado-direito">
             <div id="cabecalho-pag"><h2>Lista de empréstimos</h2></div>
             <div id="area-filtros">
+                <a th:href="@{/novoEmprestimo}" id="cadastrar"> <img th:src="@{img/icons/Plus.png}"> Novo empréstimo</a>
                 <label for="filtro-data">Filtrar por:</label>
-                <select name="filtro-data" id="filtro-data">
-                    <option value="" ></option>
+                <select name="filtro-data" id="filtro-data" onchange="filtrarEmprestimos()">
+                    <option value=""></option>
                     <option value="recentes">Mais recentes</option>
                     <option value="antigos">Mais antigos</option>
                 </select>
+
                 <label for="vencimento">Prazo:</label>
                 <select name="vencimento" id="vencimento" >
                     <option value=""></option>
@@ -112,5 +114,11 @@
         </div>
     </div>
 </body>
+<script>
+    function filtrarEmprestimos() {
+        const ordem = document.getElementById("filtro-data").value;
+        window.location.href = `/listarEmprestimos?ordem=${ordem}`;
+    }
+</script>
 </html>
     

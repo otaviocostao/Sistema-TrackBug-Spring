@@ -62,12 +62,7 @@
         <div id="lado-direito">
             <div id="cabecalho-pag"><h2>Lista de funcionários</h2></div>
             <div id="area-filtros">
-                <label for="filtro-data">Filtrar por:</label>
-                <select name="filtro-data" id="filtro-data">
-                    <option value="" ></option>
-                    <option value="recentes">Mais recentes</option>
-                    <option value="antigos">Mais antigos</option>
-                </select>
+                <a th:href="@{/cadastraFuncionario}" id="cadastrar"> <img th:src="@{img/icons/Plus.png}"> Novo funcionario</a>
             </div>
             <div id="area-tabela">
                 <table class="striped-table">

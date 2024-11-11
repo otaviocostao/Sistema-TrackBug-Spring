@@ -27,8 +27,9 @@ public class EmprestimoController {
     EquipamentoService equipamentoService;
 
     @GetMapping("/listarEmprestimos")
-    public String listarEmprestimos(Model model){
-        model.addAttribute("emprestimos", emprestimoService.findEmprestimosAtivos());
+    public String listarEmprestimos(@RequestParam(value = "ordem", required = false) String ordem, Model model) {
+        List<Emprestimo> emprestimos = emprestimoService.listarEmprestimos(ordem);
+        model.addAttribute("emprestimos", emprestimos);
         return "listar_emprestimo";
     }
 

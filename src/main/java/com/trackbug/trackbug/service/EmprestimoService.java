@@ -20,8 +20,13 @@ public class EmprestimoService {
         return emprestimoRepository.save(emprestimo);
     }
 
-    public List<Emprestimo> findAll(){
-        return emprestimoRepository.findAll();
+    public List<Emprestimo> listarEmprestimos(String ordem) {
+        if ("recentes".equals(ordem)) {
+            return emprestimoRepository.findEmprestimosMaisRecentes();
+        } else if ("antigos".equals(ordem)) {
+            return emprestimoRepository.findEmprestimosMaisAntigos();
+        }
+        return (List<Emprestimo>) emprestimoRepository.findAll(); // Default sem filtro
     }
 
     public Optional<Emprestimo> getById(Long id){
@@ -46,4 +51,6 @@ public class EmprestimoService {
     public long countEmprestimos(){
         return emprestimoRepository.countEmprestimos();
     }
+
+
 }

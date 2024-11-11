@@ -13,4 +13,10 @@ public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
 
     @Query("SELECT COUNT(e) FROM Emprestimo e")
     public long countEmprestimos();
+
+    @Query("SELECT e FROM Emprestimo e ORDER BY e.data_hora_saida DESC")
+    List<Emprestimo> findEmprestimosMaisRecentes();
+
+    @Query("SELECT e FROM Emprestimo e ORDER BY e.data_hora_saida ASC")
+    List<Emprestimo> findEmprestimosMaisAntigos();
 }

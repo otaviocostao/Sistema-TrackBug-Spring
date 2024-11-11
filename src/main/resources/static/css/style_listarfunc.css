@@ -29,18 +29,32 @@ body{
 }
 
 #area-filtros>label{
-    margin-left: 5.8vw;
+
     margin-right: 10px;
 }
 
 
-#filtro-data{
+#cadastrar{
     width: 10vw;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     padding: 6px;
-    border: solid 1px #999999;
     box-shadow: 0px 1px 1px 0px #898989;
-    border-radius: 10px;
+    border-radius: 6px;
     font-size: 11pt;
+    background-color: rgb(0, 81, 255);
+    color:white;
+    margin-left: 5.8vw;
+}
+
+#cadastrar:hover{
+    background-color: rgb(39, 108, 255);
+}
+
+#cadastrar>img{
+    width:15px;
+    margin-right:3px;
 }
 
 #area-tabela{
