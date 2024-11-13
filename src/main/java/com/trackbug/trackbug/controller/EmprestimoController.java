@@ -27,11 +27,16 @@ public class EmprestimoController {
     EquipamentoService equipamentoService;
 
     @GetMapping("/listarEmprestimos")
-    public String listarEmprestimos(@RequestParam(value = "ordem", required = false) String ordem, Model model) {
-        List<Emprestimo> emprestimos = emprestimoService.listarEmprestimos(ordem);
+    public String listarEmprestimos(
+            @RequestParam(value = "ordem", required = false) String ordem,
+            @RequestParam(value = "status", required = false) String status,
+            Model model) {
+
+        List<Emprestimo> emprestimos = emprestimoService.listarEmprestimos(ordem, status);
         model.addAttribute("emprestimos", emprestimos);
         return "listar_emprestimo";
     }
+
 
     @GetMapping("/novoEmprestimo")
     public String novoEmprestimo(Model model){

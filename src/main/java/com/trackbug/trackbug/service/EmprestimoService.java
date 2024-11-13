@@ -4,6 +4,7 @@ import com.trackbug.trackbug.model.Emprestimo;
 import com.trackbug.trackbug.repository.EmprestimoRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +21,29 @@ public class EmprestimoService {
         return emprestimoRepository.save(emprestimo);
     }
 
-    public List<Emprestimo> listarEmprestimos(String ordem) {
+    public List<Emprestimo> listarEmprestimos(String ordem, String status) {
+        LocalDateTime hoje = LocalDateTime.now();
+        List<Emprestimo> emprestimos;
+
+        // Filtragem por ordem
         if ("recentes".equals(ordem)) {
-            return emprestimoRepository.findEmprestimosMaisRecentes();
+            emprestimos = emprestimoRepository.findEmprestimosMaisRecentes();
         } else if ("antigos".equals(ordem)) {
-            return emprestimoRepository.findEmprestimosMaisAntigos();
+            emprestimos = emprestimoRepository.findEmprestimosMaisAntigos();
+        } else {
+            emprestimos = emprestimoRepository.findAll();
         }
-        return (List<Emprestimo>) emprestimoRepository.findAll(); // Default sem filtro
+
+        // Filtragem por status usando SQL diretamente
+        if ("atrasado".equals(status)) {
+            emprestimos = emprestimoRepository.findEmprestimosAtrasados(hoje);
+        } else if ("regular".equals(status)) {
+            emprestimos = emprestimoRepository.findEmprestimosRegulares(hoje);
+        } else if ("todos".equals(status)) {
+            emprestimos = emprestimoRepository.findAll();
+        }
+
+        return emprestimos;
     }
 
     public Optional<Emprestimo> getById(Long id){

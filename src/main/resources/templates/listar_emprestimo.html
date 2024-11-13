@@ -66,13 +66,15 @@
                 <label for="filtro-data">Filtrar por:</label>
                 <select name="filtro-data" id="filtro-data" onchange="filtrarEmprestimos()">
                     <option value=""></option>
+                    <option value="default">ID</option>
                     <option value="recentes">Mais recentes</option>
                     <option value="antigos">Mais antigos</option>
                 </select>
 
                 <label for="vencimento">Prazo:</label>
-                <select name="vencimento" id="vencimento" >
+                <select name="vencimento" id="vencimento"  onchange="filtrarPorStatus()">
                     <option value=""></option>
+                    <option value="todos">Todos</option>
                     <option value="regular">Regular</option>
                     <option value="atrasado">Atrasado</option>
                 </select>
@@ -119,6 +121,11 @@
         const ordem = document.getElementById("filtro-data").value;
         window.location.href = `/listarEmprestimos?ordem=${ordem}`;
     }
+
+    function filtrarPorStatus() {
+    const status = document.getElementById("vencimento").value;
+    window.location.href = `/listarEmprestimos?status=${status}`;
+}
 </script>
 </html>
     
