@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
     <link rel="stylesheet" th:href="@{/css/style_buscarfuncionario.css}">
-    <title>Buscar funcionário</title>
+    <title>Buscar equipamento</title>
 </head>
 <body>
 <div id="content-main">
@@ -60,12 +60,12 @@
         </div>
     </div>
     <div id="lado-direito">
-        <div id="cabecalho-pag"><h2>Buscar Funcionário</h2></div>
+        <div id="cabecalho-pag"><h2>Buscar equipamento</h2></div>
         <div id="area-formulario">
-            <form th:action="@{/buscarFuncionario}" method="get">
+            <form th:action="@{/buscarEquipamento}" method="get">
                 <div class="text-field">
-                    <label for="id_funcionario">ID do Funcionário:</label>
-                    <input type="number" name="id_funcionario" id="id_funcionario" class="campo-id" placeholder="Digite o ID" required>
+                    <label for="id_equipamento">ID do equipamento:</label>
+                    <input type="number" name="id_equipamento" id="id_equipamento" class="campo-id" placeholder="Digite o ID" required>
                 </div>
                 <div id="area-btn-buscar">
                     <button id="btn-buscar" type="submit">Buscar</button>
@@ -73,17 +73,22 @@
             </form>
         </div>
 
-        <div id="resultado-busca" th:if="${funcionario != null}">
-            <h3>Dados do funcionário:</h3>
-            <p><strong>ID:</strong> <span th:text="${funcionario.id_funcionario}">ID do funcionário</span></p>
-            <p><strong>Nome:</strong> <span th:text="${funcionario.nome_funcionario}">Nome do Funcionário</span></p>
-            <p><strong>Função:</strong> <span th:text="${funcionario.funcao_funcionario}">Função</span></p>
-            <p><strong>Data de admissão:</strong> <span th:text="${funcionario.data_admissao_funcionario}">Data de amissão</span></p>
+        <!-- Área de resultado -->
+        <div id="resultado-busca" th:if="${equipamento != null}">
+            <h3>Dados do equipamento:</h3>
+            <p><strong>ID:</strong> <span th:text="${equipamento.id_equipamento}">ID do equipamento</span></p>
+            <p><strong>Descrição:</strong> <span th:text="${equipamento.descricao_eqp}">Descrição</span></p>
+            <p><strong>Data de compra:</strong> <span th:text="${equipamento.data_compra_eqp}">Data de compra</span></p>
+            <p><strong>Peso:</strong> <span th:text="${equipamento.peso_eqp}">Peso</span></p>
+            <p><strong>Largura:</strong> <span th:text="${equipamento.largura_eqp}">Largura</span></p>
+            <p><strong>Comprimento:</strong> <span th:text="${equipamento.comprimento_eqp}">Comprimento</span></p>
+            <p><strong>Histórico de manutenção:</strong> <span th:text="${equipamento.historico_manutencao_eqp}">Histórico de manutenção</span></p>
+            <p><strong>Estado de conservação:</strong> <span th:text="${equipamento.estado_conservacao_eqp}">Estado de conservação</span></p>
+            <p><strong>Disponibilidade:</strong> <span th:text="${equipamento.disponibilidade}">Disponibilidade</span></p>
 
             <div id="botoes">
-                <a th:href="@{/editarFuncionario/{id}(id=${funcionario.id_funcionario})}"><button class="editar">Editar</button></a>
-
-                <form th:action="@{/deletarFuncionario/{id}(id=${funcionario.id_funcionario})}" method="post" style="display: inline;" class="form-delete">
+                <a th:href="@{/editarEquipamento/{id}(id=${equipamento.id_equipamento})}"><button class="editar">Editar</button></a>
+                <form th:action="@{/deletarEquipamento/{id}(id=${equipamento.id_equipamento})}" method="post" style="display: inline;" class="form-delete">
                     <button type="submit" class="deletar">Deletar</button>
                 </form>
             </div>

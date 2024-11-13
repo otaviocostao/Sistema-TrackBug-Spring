@@ -1,6 +1,7 @@
 package com.trackbug.trackbug.controller;
 
 import com.trackbug.trackbug.model.Equipamento;
+import com.trackbug.trackbug.model.Funcionario;
 import com.trackbug.trackbug.service.EquipamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class EquipamentoController {
@@ -52,5 +54,18 @@ public class EquipamentoController {
         equipamentoService.deleteEquipamento(id);
 
         return "redirect:/listarEquipamentos";
+    }
+
+    @GetMapping("/buscarEquipamento")
+    public String buscarFuncionario(@RequestParam(value = "id_equipamento", required = false) Long id, Model model) {
+        if (id != null) {
+            Optional<Equipamento> equipamentoOptional = equipamentoService.getById(id);
+            if (equipamentoOptional.isPresent()) {
+                model.addAttribute("equipamento", equipamentoOptional.get());
+            } else {
+                model.addAttribute("erro", "Equipamento não encontrado com ID: " + id);
+            }
+        }
+        return "buscar_equipamento";  // Nome do arquivo HTML
     }
 }

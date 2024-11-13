@@ -4,6 +4,10 @@ body {
     font-family: Arial;
 }
 
+a{
+    text-decoration: none;
+}
+
 #lado-direito {
     height: 100%;
     width: 85vw;
@@ -39,7 +43,7 @@ form{
     align-items:center;
 }
 
-#id_funcionario {
+.campo-id {
     width: 5vw;
     padding: 6px;
     border: solid 1px #999999;
