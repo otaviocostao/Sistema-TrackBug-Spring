@@ -31,16 +31,15 @@ public class EmprestimoService {
         } else if ("antigos".equals(ordem)) {
             emprestimos = emprestimoRepository.findEmprestimosMaisAntigos();
         } else {
-            emprestimos = emprestimoRepository.findAll();
+            emprestimos = emprestimoRepository.findByStatus("Ativo");
         }
 
-        // Filtragem por status usando SQL diretamente
         if ("atrasado".equals(status)) {
             emprestimos = emprestimoRepository.findEmprestimosAtrasados(hoje);
         } else if ("regular".equals(status)) {
             emprestimos = emprestimoRepository.findEmprestimosRegulares(hoje);
         } else if ("todos".equals(status)) {
-            emprestimos = emprestimoRepository.findAll();
+            emprestimos = emprestimoRepository.findByStatus("Ativo");
         }
 
         return emprestimos;
@@ -63,6 +62,10 @@ public class EmprestimoService {
     }
     public List<Emprestimo> findEmprestimosFinalizado(){
         return emprestimoRepository.findByStatus("Finalizado");
+    }
+    public List<Emprestimo> findEmprestimosAtrasados(){
+        LocalDateTime hoje = LocalDateTime.now();
+        return emprestimoRepository.findEmprestimosAtrasados(hoje);
     }
 
     public long countEmprestimos(){

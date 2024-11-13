@@ -77,7 +77,7 @@
                     </a>
                 </div>
                 <div id="card3">
-                    <h3>Empréstimos realizados</h3>
+                    <h3>Empréstimos ativos</h3>
                     <h1><span th:text="${countEmprestimo}">0</span></h1>
                     <a th:href="@{/listarEmprestimos}">
                         <button class="btn-vertodos">Ver todos</button>
@@ -90,52 +90,27 @@
             <div id="area-tabela">
                 <table class="striped-table">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Equipamento</th>
-                            <th>Funcionário</th>
-                            <th>Data de saída</th>
-                            <th>Data de retorno</th>
-                            <th>Observações</th>
-                        </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Equipamento</th>
+                        <th>Funcionário</th>
+                        <th>Data de saída</th>
+                        <th>Data de retorno</th>
+                        <th>Observações</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    <tr th:each="emprestimo, iterStat : ${emprestimos}">
+                        <td th:text="${emprestimo.id}"></td>
+                        <td th:text="${emprestimo.equipamento.descricao_eqp}"></td>
+                        <td th:text="${emprestimo.funcionario_responsavel.nome_funcionario}"></td>
+                        <td th:text="${emprestimo.data_hora_saida}"></td>
+                        <td th:text="${emprestimo.data_hora_retorno}"></td>
+                        <td th:text="${emprestimo.observacoes_emprestimo}"></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
         </div>
     </div>
 </body>
