@@ -41,6 +41,9 @@ public class EquipamentoService {
     public List<Equipamento> findEquipamentosDisponiveis(){
         return equipamentoRepository.findByDisponibilidade("Disponível");
     }
+    public List<Equipamento> findEquipamentosIndisponiveis(){
+        return equipamentoRepository.findByDisponibilidade("Indisponível");
+    }
 
     public long countEquipamento(){
         return equipamentoRepository.countEquipamento();
