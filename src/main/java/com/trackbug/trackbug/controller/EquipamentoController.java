@@ -57,7 +57,7 @@ public class EquipamentoController {
     }
 
     @GetMapping("/buscarEquipamento")
-    public String buscarFuncionario(@RequestParam(value = "id_equipamento", required = false) Long id, Model model) {
+    public String buscarEquipamento(@RequestParam(value = "id_equipamento", required = false) Long id, Model model) {
         if (id != null) {
             Optional<Equipamento> equipamentoOptional = equipamentoService.getById(id);
             if (equipamentoOptional.isPresent()) {

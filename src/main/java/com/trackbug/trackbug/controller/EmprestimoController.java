@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class EmprestimoController {
@@ -127,5 +128,18 @@ public class EmprestimoController {
     public String historicoEmprestimos(Model model){
         model.addAttribute("emprestimos", emprestimoService.findEmprestimosFinalizado());
         return "historico_emprestimo";
+    }
+
+    @GetMapping("/buscarEmprestimo")
+    public String buscarEmprestimo(@RequestParam(value = "id", required = false) Long id, Model model) {
+        if (id != null) {
+            Optional<Emprestimo> emprestimoOptional = emprestimoService.getById(id);
+            if (emprestimoOptional.isPresent()) {
+                model.addAttribute("emprestimo", emprestimoOptional.get());
+            } else {
+                model.addAttribute("erro", "Empréstimo não encontrado com ID: " + id);
+            }
+        }
+        return "buscar_emprestimo";  // Nome do arquivo HTML
     }
 }
