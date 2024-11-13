@@ -5,10 +5,7 @@ import com.trackbug.trackbug.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class FuncionarioController {
@@ -54,5 +51,14 @@ public class FuncionarioController {
         return "redirect:/listarFuncionarios";
     }
 
+    @GetMapping("/buscarFuncionario")
+    public String buscarFuncionario(@RequestParam(value = "id_funcionario", required = false) Long id, Model model) {
+        if (id != null) {  // Verifica se o ID foi fornecido
+            Funcionario funcionario = funcionarioService.getById(id)
+                    .orElseThrow(() -> new RuntimeException("Funcionario não encontrado com ID: " + id));
+            model.addAttribute("funcionario", funcionario);
+        }
+        return "buscar_funcionario";  // Nome do arquivo HTML
+    }
 
 }

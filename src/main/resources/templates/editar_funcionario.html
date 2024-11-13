@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
     <link rel="stylesheet" th:href="@{/css/style_cadfunc.css}">
-    <title>Cadastrar funcionário</title>
+    <title>Editar funcionário</title>
 </head>
 <body>
     <div id="content-main">
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div id="lado-direito">
-            <div id="cabecalho-pag"><h2>Cadastrar novo funcionário</h2></div>
+            <div id="cabecalho-pag"><h2>Editar funcionário</h2></div>
             <div id="area-formulario">
                 <form th:action="@{/salvarEdicaoFuncionario}" th:object="${funcionario}" method="post">
                     <div class="text-field">

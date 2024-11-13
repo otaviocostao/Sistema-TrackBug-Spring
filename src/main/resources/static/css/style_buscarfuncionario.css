@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+#lado-direito {
+    height: 100%;
+    width: 85vw;
+}
+
+#cabecalho-pag {
+    width: 90%;
+    height: 5%;
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #393939;
+}
+
+#area-formulario {
+    width: 100%;
+    height: 10%;
+    display:flex;
+    align-items:center;
+}
+
+form{
+    display:flex;
+
+}
+
+.text-field {
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+    display:flex;
+    align-items:center;
+}
+
+#id_funcionario {
+    width: 5vw;
+    padding: 6px;
+    border: solid 1px #999999;
+    box-shadow: 0px 1px 1px 0px #898989;
+    border-radius: 5px;
+    margin-left:5px;
+}
+
+#area-btn-buscar {
+    width: 30%;
+    height: 20%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+#btn-buscar {
+    width: 80px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 1px 1px 0px #898989;
+    font-size: 11pt;
+    background-color: rgb(0, 81, 255);
+    color: #fff;
+}
+
+#btn-buscar:hover {
+    background-color: rgb(39, 108, 255);
+}
+
+#resultado-busca {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 70%;
+}
+
+#resultado-busca ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#resultado-busca li {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+.editar{
+    width: 50px;
+    height: 28px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-size: 9pt;
+    border-radius: 5px;
+    cursor:pointer;
+    border:none;
+    background-color: rgb(0, 81, 255);
+}
+
+.editar:hover{
+    background-color: rgb(39, 108, 255);
+}

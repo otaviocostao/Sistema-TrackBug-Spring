@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style_barralateral.css}">
+    <link rel="stylesheet" th:href="@{/css/style_buscarfuncionario.css}">
+    <title>Buscar funcionário</title>
+</head>
+<body>
+<div id="content-main">
+    <div id="barra-lateral">
+        <div id="logo">
+            <h2>TrackBug</h2>
+        </div>
+        <div class="area-home">
+            <div class="area-btn">
+                <a th:href="@{/}" class="btn-funcao">Início</a>
+            </div>
+        </div>
+        <div class="botoes-barra-lateral">
+            <div class="area-btn">
+                <a th:href="@{/cadastraFuncionario}" class="btn-funcao">Cadastrar funcionário</a>
+            </div>
+            <div class="area-btn">
+                <a th:href="@{/cadastraEquipamento}" class="btn-funcao">Cadastrar equipamento</a>
+            </div>
+            <div class="area-btn">
+                <a th:href="@{/novoEmprestimo}" class="btn-funcao">Novo empréstimo</a>
+            </div>
+        </div>
+        <div class="botoes-barra-lateral">
+            <div class="area-btn">
+                <a th:href="@{/listarFuncionarios}" class="btn-funcao">Lista de funcionários</a>
+            </div>
+            <div class="area-btn">
+                <a th:href="@{/listarEquipamentos}" class="btn-funcao">Lista de equipamentos</a>
+            </div>
+            <div class="area-btn">
+                <a th:href="@{/listarEmprestimos}" class="btn-funcao">Lista de empréstimos</a>
+            </div>
+        </div>
+        <div class="area-home">
+            <div class="area-btn">
+                <a th:href="@{/historicoEmprestimos}" class="btn-funcao">Histórico de empréstimos</a>
+            </div>
+        </div>
+        <div class="botoes-barra-lateral">
+            <div class="area-btn">
+                <a href="" class="btn-funcao">Buscar funcionário</a>
+            </div>
+            <div class="area-btn">
+                <a href="" class="btn-funcao">Buscar equipamento</a>
+            </div>
+            <div class="area-btn">
+                <a href="" class="btn-funcao">Buscar empréstimo</a>
+            </div>
+        </div>
+    </div>
+    <div id="lado-direito">
+        <div id="cabecalho-pag"><h2>Buscar Funcionário</h2></div>
+        <div id="area-formulario">
+            <form th:action="@{/buscarFuncionario}" method="get">
+                <div class="text-field">
+                    <label for="id_funcionario">ID do Funcionário:</label>
+                    <input type="number" name="id_funcionario" id="id_funcionario" placeholder="Digite o ID" required>
+                </div>
+                <div id="area-btn-buscar">
+                    <button id="btn-buscar" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Área de resultado -->
+        <div id="resultado-busca" th:if="${funcionario != null}">
+            <h3>Dados do funcionário:</h3>
+            <p><strong>ID:</strong> <span th:text="${funcionario.id_funcionario}">ID do funcionário</span></p>
+            <p><strong>Nome:</strong> <span th:text="${funcionario.nome_funcionario}">Nome do Funcionário</span></p>
+            <p><strong>Função:</strong> <span th:text="${funcionario.funcao_funcionario}">Função</span></p>
+            <p><strong>Data de admissão:</strong> <span th:text="${funcionario.data_admissao_funcionario}">Data de amissão</span></p>
+
+            <a th:href="@{/editarFuncionario/{id}(id=${funcionario.id_funcionario})}"><button class="editar">Editar</button></a>
+        </div>
+        <div id="resultado-busca1" th:if="${funcionario == null}">
+            <h3>Nenhum funcionário encontrado com o ID informado.</h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
