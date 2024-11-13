@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 public class FuncionarioController {
 
@@ -53,12 +55,16 @@ public class FuncionarioController {
 
     @GetMapping("/buscarFuncionario")
     public String buscarFuncionario(@RequestParam(value = "id_funcionario", required = false) Long id, Model model) {
-        if (id != null) {  // Verifica se o ID foi fornecido
-            Funcionario funcionario = funcionarioService.getById(id)
-                    .orElseThrow(() -> new RuntimeException("Funcionario não encontrado com ID: " + id));
-            model.addAttribute("funcionario", funcionario);
+        if (id != null) {
+            Optional<Funcionario> funcionarioOptional = funcionarioService.getById(id);
+            if (funcionarioOptional.isPresent()) {
+                model.addAttribute("funcionario", funcionarioOptional.get());
+            } else {
+                model.addAttribute("erro", "Funcionário não encontrado com ID: " + id);
+            }
         }
         return "buscar_funcionario";  // Nome do arquivo HTML
     }
+
 
 }

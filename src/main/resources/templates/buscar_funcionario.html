@@ -81,10 +81,17 @@
             <p><strong>Função:</strong> <span th:text="${funcionario.funcao_funcionario}">Função</span></p>
             <p><strong>Data de admissão:</strong> <span th:text="${funcionario.data_admissao_funcionario}">Data de amissão</span></p>
 
-            <a th:href="@{/editarFuncionario/{id}(id=${funcionario.id_funcionario})}"><button class="editar">Editar</button></a>
+            <div id="botoes">
+                <a th:href="@{/editarFuncionario/{id}(id=${funcionario.id_funcionario})}"><button class="editar">Editar</button></a>
+
+                <form th:action="@{/deletarFuncionario/{id}(id=${funcionario.id_funcionario})}" method="post" style="display: inline;" class="form-delete">
+                    <button type="submit" class="deletar">Deletar</button>
+                </form>
+            </div>
+
         </div>
-        <div id="resultado-busca1" th:if="${funcionario == null}">
-            <h3>Nenhum funcionário encontrado com o ID informado.</h3>
+        <div th:if="${erro != null}">
+            <p th:text="${erro}" style="margin-left:10px;"></p>
         </div>
     </div>
 </div>
