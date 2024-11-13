@@ -22,8 +22,19 @@ public class EquipamentoService {
         return equipamentoRepository.save(equipamento);
     }
 
-    public List<Equipamento> findAll(){
-        return equipamentoRepository.findAll();
+    public List<Equipamento> findAll(String disponibilidade){
+        List<Equipamento> equipamentos;
+
+        if("disponivel".equals(disponibilidade)){
+            equipamentos = findEquipamentosDisponiveis();
+        }else if( "indisponivel".equals(disponibilidade)){
+            equipamentos = findEquipamentosIndisponiveis();
+        }else if("todos".equals(disponibilidade)){
+            equipamentos = equipamentoRepository.findAll();
+        }else{
+            equipamentos = equipamentoRepository.findAll();
+        }
+        return equipamentos;
     }
 
     public Optional<Equipamento> getById(Long id){

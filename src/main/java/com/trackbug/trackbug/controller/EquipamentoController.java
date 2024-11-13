@@ -5,10 +5,9 @@ import com.trackbug.trackbug.service.EquipamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class EquipamentoController {
@@ -17,8 +16,9 @@ public class EquipamentoController {
     EquipamentoService equipamentoService;
 
     @GetMapping("/listarEquipamentos")
-    public String listarEquipamentos(Model model){
-        model.addAttribute("equipamentos", equipamentoService.findAll());
+    public String listarEquipamentos(@RequestParam(value = "disponibilidade", required = false) String disponibilidade, Model model){
+        List<Equipamento> equipamentos = equipamentoService.findAll(disponibilidade);
+        model.addAttribute("equipamentos", equipamentos);
         return "listar_equipamentos";
     }
 

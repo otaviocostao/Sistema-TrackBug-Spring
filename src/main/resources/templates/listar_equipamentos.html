@@ -63,18 +63,13 @@
             <div id="cabecalho-pag"><h2>Lista de equipamentos</h2></div>
             <div id="area-filtros">
                 <a th:href="@{/cadastraEquipamento}" id="cadastrar"> <img th:src="@{img/icons/Plus.png}"> Novo equipamento</a>
-                <label for="filtro-data">Filtrar por:</label>
-                <select name="filtro-data" id="filtro-data">
-                    <option value="" ></option>
-                    <option value="recentes">Mais recentes</option>
-                    <option value="antigos">Mais antigos</option>
-                </select>
 
                 <label for="disponibilidade">Disponibilidade:</label>
-                <select name="disponibilidade" id="disponibilidade">
+                <select name="disponibilidade" id="disponibilidade" onchange="filtrarPorDisponibilidade()">
                     <option value=""></option>
-                    <option value="disponiveis">Disponíveis</option>
-                    <option value="indisponiveis">Indisponíveis</option>
+                    <option value="todos">Todos</option>
+                    <option value="disponivel">Disponíveis</option>
+                    <option value="indisponivel">Indisponíveis</option>
                 </select>
             </div>
             <div id="area-tabela">
@@ -116,4 +111,10 @@
         </div>
     </div>
 </body>
+<script>
+    function filtrarPorDisponibilidade() {
+        const disponibilidade = document.getElementById("disponibilidade").value;
+        window.location.href = `/listarEquipamentos?disponibilidade=${disponibilidade}`;
+    }
+</script>
 </html>
